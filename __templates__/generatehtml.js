@@ -2,7 +2,7 @@ const fs = require("fs");
 
 function generateFile(data) {
   fs.writeFile(
-    __output__ + "index.html",
+    "index.html",
     `<!DOCTYPE html>
         <html lang="en">
           <head>

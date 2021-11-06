@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateFile = require("./generatehtml");
+const generateFile = require("./__templates__/generatehtml");
 
 const questions = [
   {
