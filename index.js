@@ -115,6 +115,58 @@ const init = () => {
       `${managerAnswers.email}`,
       `${managerAnswers.officenumber}`
     );
+    emptyArray.push(`<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Team Profile</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        />
+    
+        <style>
+          .card {
+            margin-top: 30px;
+          }
+        </style>
+      </head>
+      <body>
+        <section class="hero is-info">
+          <div class="hero-body">
+            <p class="title">Team Profile</p>
+          </div>
+        </section>
+        <section class="section is-medium">
+          <h1 class="title">Team Members</h1>`);
+    emptyArray.push(`<div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img
+              src="https://bulma.io/images/placeholders/96x96.png"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">${manager.name}</p>
+          <p class="subtitle is-6">Manager</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <ul>
+          <li>ID: ${manager.id}</li>
+          <li>Email: ${manager.email}</li>
+          <li>Office Number: ${manager.office}</li>
+        </ul>
+      </div>
+    </div>
+  </div>`);
     console.log(manager);
     choose();
     //generateFile(answers);
@@ -133,8 +185,16 @@ const choose = () => {
       getInternInfo();
     }
 
-    if (memberAnswers.member === "No thanks, generate my team!")
+    if (memberAnswers.member === "No thanks, generate my team!") {
+      emptyArray.push(`</section>
+      </body>
+    </html>`);
       console.log("generate html");
+      const arrayString = emptyArray.join("");
+      fs.writeFile("index.html", arrayString, (err) =>
+        err ? console.error(err) : console.log("Success!")
+      );
+    }
   });
 };
 
@@ -146,6 +206,32 @@ const getEngineerInfo = () => {
       `${engineerAnswers.email}`,
       `${engineerAnswers.github}`
     );
+    emptyArray.push(`<div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img
+              src="https://bulma.io/images/placeholders/96x96.png"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">${engineer.name}</p>
+          <p class="subtitle is-6">Engineer</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <ul>
+          <li>ID: ${engineer.id}</li>
+          <li>Email: ${engineer.email}</li>
+          <li>Github Username: ${engineer.github}</li>
+        </ul>
+      </div>
+    </div>
+  </div>`);
     console.log(engineer);
     choose();
     //generateFile(answers);
@@ -160,6 +246,32 @@ const getInternInfo = () => {
       `${internAnswers.email}`,
       `${internAnswers.school}`
     );
+    emptyArray.push(`<div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img
+              src="https://bulma.io/images/placeholders/96x96.png"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">${intern.name}</p>
+          <p class="subtitle is-6">Intern</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <ul>
+          <li>ID: ${intern.id}</li>
+          <li>Email: ${intern.email}</li>
+          <li>School: ${intern.school}</li>
+        </ul>
+      </div>
+    </div>
+  </div>`);
     console.log(intern);
     choose();
     //generateFile(answers);
@@ -167,3 +279,5 @@ const getInternInfo = () => {
 };
 
 init();
+
+const emptyArray = [];
