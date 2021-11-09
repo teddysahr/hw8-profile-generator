@@ -1,5 +1,4 @@
 class Manager {
-  // TODO: Add a constructor
   constructor(name, id, email, office) {
     this.name = name;
     this.id = id;
@@ -7,3 +6,5 @@ class Manager {
     this.office = office;
   }
 }
+
+module.exports = Manager;
