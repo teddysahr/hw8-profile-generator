@@ -164,10 +164,10 @@ const choose = () => {
       emptyArray.push(`</section>
       </body>
     </html>`);
-      console.log("generate html");
+      //console.log("generate html");
       const arrayString = emptyArray.join("");
-      fs.writeFile("index.html", arrayString, (err) =>
-        err ? console.error(err) : console.log("Success!")
+      fs.writeFile("sample-profile.html", arrayString, (err) =>
+        err ? console.error(err) : console.log("Success! Generating HTML!")
       );
     }
   });
